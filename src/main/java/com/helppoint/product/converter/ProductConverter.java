@@ -3,28 +3,35 @@ package com.helppoint.product.converter;
 import com.helppoint.product.dto.ColorResponse;
 import com.helppoint.product.dto.ProductResponse;
 import com.helppoint.product.dto.SizeResponse;
-import com.helppoint.product.entity.ColorEntity;
 import com.helppoint.product.entity.ProductEntity;
-import com.helppoint.product.entity.SizeEntity;
+import com.helppoint.product.entity.ProductSizeEntity;
+import com.helppoint.product.entity.SizeColorEntity;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
 public class ProductConverter {
 
-    private ColorResponse toColorResponse(final ColorEntity colorEntity) {
+    private ColorResponse toColorResponse(final SizeColorEntity sizeColorEntity) {
         return ColorResponse.builder()
-            .id(colorEntity.getId())
-            .description(colorEntity.getDescription())
+            .id(sizeColorEntity.getColor().getId())
+            .name(sizeColorEntity.getColor().getName())
+            .description(sizeColorEntity.getColor().getDescription())
+            .amount(sizeColorEntity.getAmount())
             .build();
     }
 
-    private SizeResponse toSizeResponse(final SizeEntity sizeEntity) {
+    private SizeResponse toSizeResponse(final ProductSizeEntity productSizeEntity) {
         return SizeResponse.builder()
-            .id(sizeEntity.getId())
-            .description(sizeEntity.getDescription())
+            .id(productSizeEntity.getSize().getId())
+            .description(productSizeEntity.getSize().getDescription())
+            .amount(productSizeEntity.getAmount())
+            .colors(
+                productSizeEntity.getSize().getProductColor().stream()
+                    .map(this::toColorResponse)
+                    .collect(Collectors.toList())
+            )
             .build();
     }
 
@@ -33,18 +40,10 @@ public class ProductConverter {
             .id(productEntity.getId())
             .description(productEntity.getDescription())
             .image(productEntity.getImage())
-            .amount(productEntity.getAmount())
-            .colors(
-                productEntity.getColors().stream()
-                    .map(this::toColorResponse)
-                    .collect(Collectors.toList()
-                )
-            )
             .sizes(
-                productEntity.getSizes().stream()
+                productEntity.getProductSize().stream()
                     .map(this::toSizeResponse)
-                    .collect(Collectors.toList()
-                )
+                    .collect(Collectors.toList())
             )
             .build();
     }

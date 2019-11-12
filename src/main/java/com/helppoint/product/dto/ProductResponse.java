@@ -15,8 +15,6 @@ public class ProductResponse implements Serializable {
     private final Long id;
     private final String description;
     private final String image;
-    private final Integer amount;
-    private final List<ColorResponse> colors;
     private final List<SizeResponse> sizes;
 
 }

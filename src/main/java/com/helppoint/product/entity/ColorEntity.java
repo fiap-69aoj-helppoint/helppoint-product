@@ -10,8 +10,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.Set;
 
 @Builder
 @Getter
@@ -20,13 +23,24 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Entity
 @Table(name = "color")
-public class ColorEntity {
+public class ColorEntity implements Serializable {
+
+    private static final long serialVersionUID = 8618211131801715730L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
+    private String name;
+
+    @NotNull
     private String description;
+
+    @OneToMany(mappedBy = "color")
+    private Set<SizeColorEntity> productColor;
+
+    /*@NotNull
+    private Integer amount;*/
 
 }

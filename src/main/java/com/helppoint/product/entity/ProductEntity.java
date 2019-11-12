@@ -17,6 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
 
 @Builder
 @Getter
@@ -40,7 +41,7 @@ public class ProductEntity {
     @NotNull
     private Integer amount;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "product_color",
         joinColumns = @JoinColumn(name = "id_product"),
@@ -48,12 +49,12 @@ public class ProductEntity {
     )
     private List<ColorEntity> colors;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "product_size",
         joinColumns = @JoinColumn(name = "id_product"),
         inverseJoinColumns = @JoinColumn(name = "id_size")
     )
-    private List<SizeEntity> sizes;
+    private Set<SizeEntity> sizes;
 
 }

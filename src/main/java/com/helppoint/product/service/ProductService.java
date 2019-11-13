@@ -21,9 +21,6 @@ public class ProductService {
     public ProductResponse findById(final Long id) {
         // todo lancar exception
         final ProductEntity productEntity = productRepository.findById(id).orElse(null);
-
-        log.info(String.valueOf(productEntity));
-
         return productConverter.toProductResponse(productEntity);
     }
 

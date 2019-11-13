@@ -40,6 +40,7 @@ public class ProductConverter {
             .id(productEntity.getId())
             .description(productEntity.getDescription())
             .image(productEntity.getImage())
+            .value(productEntity.getValue())
             .sizes(
                 productEntity.getProductSize().stream()
                     .map(this::toSizeResponse)

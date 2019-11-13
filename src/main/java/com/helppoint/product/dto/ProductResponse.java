@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Builder
@@ -15,6 +16,7 @@ public class ProductResponse implements Serializable {
     private final Long id;
     private final String description;
     private final String image;
+    private final BigDecimal value;
     private final List<SizeResponse> sizes;
 
 }

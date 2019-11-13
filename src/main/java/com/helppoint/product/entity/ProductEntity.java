@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Set;
 
 @Builder
@@ -36,6 +37,9 @@ public class ProductEntity implements Serializable {
 
     @NotNull
     private String image;
+
+    @NotNull
+    private BigDecimal value;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<ProductSizeEntity> productSize;

@@ -2,11 +2,13 @@ package com.helppoint.product.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,8 +39,8 @@ public class ColorEntity implements Serializable {
     @NotNull
     private String description;
 
-    @OneToMany(mappedBy = "color")
-    private Set<SizeColorEntity> productColor;
+/*    @OneToMany(mappedBy = "color", fetch = FetchType.EAGER)
+    private Set<SizeColorEntity> productColor;*/
 
     /*@NotNull
     private Integer amount;*/

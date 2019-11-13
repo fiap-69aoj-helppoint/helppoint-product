@@ -2,6 +2,7 @@ package com.helppoint.product.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.List;
 import java.util.Set;
 
 @Builder
@@ -37,7 +40,10 @@ public class ProductEntity implements Serializable {
     @NotNull
     private String image;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @NotNull
+    private BigDecimal value;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private Set<ProductSizeEntity> productSize;
 
 }

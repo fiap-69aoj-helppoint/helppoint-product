@@ -15,9 +15,9 @@ public class ProductConverter {
 
     private ColorResponse toColorResponse(final SizeColorEntity sizeColorEntity) {
         return ColorResponse.builder()
-            .id(sizeColorEntity.getColor().getId())
-            .name(sizeColorEntity.getColor().getName())
-            .description(sizeColorEntity.getColor().getDescription())
+            //.id(sizeColorEntity.getColor().getId())
+            //.name(sizeColorEntity.getColor().getName())
+            //.description(sizeColorEntity.getColor().getDescription())
             .amount(sizeColorEntity.getAmount())
             .build();
     }
@@ -40,6 +40,7 @@ public class ProductConverter {
             .id(productEntity.getId())
             .description(productEntity.getDescription())
             .image(productEntity.getImage())
+            .value(productEntity.getValue())
             .sizes(
                 productEntity.getProductSize().stream()
                     .map(this::toSizeResponse)

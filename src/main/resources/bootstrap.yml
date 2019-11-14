@@ -3,7 +3,10 @@ spring:
     name: helppoint-product
   profiles:
     active:
-      default
+      dev
   cloud:
     config:
-      enabled: true
+      enabled: false
+
+server:
+  port: 8092

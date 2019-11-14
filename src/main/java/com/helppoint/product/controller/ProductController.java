@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @Api(value = "Produtos", tags = {"API de Produtos"})
 @RestController
 @RequestMapping("/products")
@@ -21,8 +23,14 @@ public class ProductController {
 
     @ApiOperation(value = "Busca um produto por id")
     @GetMapping("/{id}")
-    public ResponseEntity<ProductResponse> findById(@PathVariable final Long id) {
+    public ResponseEntity<ProductResponse> findById(@PathVariable final Long id) throws Exception {
         return ResponseEntity.ok(productService.findById(id));
+    }
+
+    @ApiOperation(value = "Busca produtos relacionados")
+    @GetMapping("/{id}/related")
+    public ResponseEntity<List<ProductResponse>> related(@PathVariable final Long id) throws Exception {
+        return ResponseEntity.ok(productService.related(id));
     }
 
 }

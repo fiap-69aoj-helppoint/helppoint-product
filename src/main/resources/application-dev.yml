@@ -1,22 +1,18 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://172.16.40.22:3306/helppoint-product?useTimezone=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/helppoint-product
     username: root
-    password: 142532
+    password: root
   jpa:
     show-sql: true
     hibernate.format_sql: true
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
   zipkin:
     baseUrl: http://localhost:9411/
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:9091/eureka/
 
 

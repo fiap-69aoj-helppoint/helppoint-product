@@ -8,7 +8,6 @@ spring:
     show-sql: true
     hibernate:
       format_sql: true
-      ddl-auto: create-drop
   zipkin:
     baseUrl: http://helppoint_zipkin:9411/
 

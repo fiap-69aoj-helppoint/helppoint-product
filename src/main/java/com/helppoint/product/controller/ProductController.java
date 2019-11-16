@@ -17,7 +17,7 @@ import java.util.List;
 @Api(value = "Produtos", tags = {"API de Produtos"})
 @RestController
 @RequestMapping("/products")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class ProductController {
 
     @Autowired

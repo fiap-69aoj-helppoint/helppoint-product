@@ -1,7 +1,7 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://helppoint_mysql:3306/helppoint-product
+    url: jdbc:mysql://helppoint-mysql:3306/helppoint-product
     username: root
     password: root
   jpa:
@@ -9,7 +9,7 @@ spring:
     hibernate:
       format_sql: true
   zipkin:
-    baseUrl: http://helppoint_zipkin:9411/
+    baseUrl: http://helppoint-zipkin:9411/
 
 eureka:
   instance:
@@ -18,4 +18,4 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://helppoint_discovery_server:8761/eureka/
+      defaultZone: http://helppoint-discovery-server:8761/eureka/
